@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://daltrlnasi68w"]
+
+[ext_resource type="Texture2D" uid="uid://ddedcv3i84hsc" path="res://icon.svg" id="2_2f5us"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5j2ob"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_aupcd"]
+load_path = "res://.godot/imported/sky.png-26d2f2385da36d2602e95bc19d12fcc5.bptc.ctex"
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_l51pv"]
+panorama = SubResource("CompressedTexture2D_aupcd")
+filter = false
+
+[sub_resource type="Sky" id="Sky_qlu05"]
+sky_material = SubResource("PanoramaSkyMaterial_l51pv")
+
+[sub_resource type="Environment" id="Environment_sscir"]
+background_mode = 1
+background_color = Color(0.245091, 0.693853, 0.832906, 1)
+background_energy_multiplier = 0.3
+sky = SubResource("Sky_qlu05")
+sky_rotation = Vector3(0, 3.14159, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m12dn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hanti"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.75
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.493217, 2.76577)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+sides = 32
+material = SubResource("StandardMaterial3D_5j2ob")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_sscir")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.70616, 0)
+size = Vector3(10, 0.2, 10)
+material = SubResource("StandardMaterial3D_m12dn")
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.872, 0, 0)
+inner_radius = 0.1
+outer_radius = 0.05
+sides = 32
+ring_sides = 16
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.86221, 0.145455, 0)
+shaded = true
+double_sided = false
+texture = ExtResource("2_2f5us")
+
+[node name="Dancer" type="Dancer" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 1.5, 1)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Dancer"]
+shadow_enabled = true
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Dancer/OmniLight3D"]
+radius = 0.1
+material = SubResource("StandardMaterial3D_hanti")
+
+[node name="MagicSprite" type="MagicSprite" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33579, 0.232365, 0)
+shaded = true
+double_sided = false

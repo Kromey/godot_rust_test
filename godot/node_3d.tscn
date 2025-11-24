@@ -5,7 +5,6 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5j2ob"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_aupcd"]
-load_path = "res://.godot/imported/sky.png-26d2f2385da36d2602e95bc19d12fcc5.bptc.ctex"
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_l51pv"]
 panorama = SubResource("CompressedTexture2D_aupcd")
